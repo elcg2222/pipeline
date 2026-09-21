@@ -8,6 +8,14 @@ from core.scoring import apply_diversity, hard_filter, score
 from core.store import Store
 from providers.base import build
 
+# Import các provider để đăng ký vào registry
+import providers.social_discovery  # noqa: F401
+import providers.discord_provider  # noqa: F401
+import providers.douyin_tiktok     # noqa: F401
+import providers.marketplace       # noqa: F401
+import providers.reddit_provider   # noqa: F401
+import providers.facebook_provider # noqa: F401
+
 log = logging.getLogger("stage.discover")
 
 

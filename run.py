@@ -28,6 +28,7 @@ from core.util import setup_logging, which         # noqa: E402
 import providers.douyin_tiktok  # noqa: F401,E402  (đăng ký provider)
 import providers.marketplace    # noqa: F401,E402
 import providers.social_discovery  # noqa: F401,E402
+import providers.discord_provider  # noqa: F401,E402
 
 
 def load_config(path: str) -> dict:

@@ -28,6 +28,7 @@ enabled_providers:
   1688: false
   reddit: true
   instagram: true
+  discord: true
 
 providers:
   douyin:
@@ -62,10 +63,42 @@ providers:
     session_user: ""
     session_file: ""
     max_per_hashtag: 20
-    use_topic_as_hashtag: false
+    use_topic_as_hashtag: true
     topic_hashtags:
-      "máy massage cổ": ["neckmassager", "neckmassage"]
-      "đồ gia dụng thông minh": ["kitchenhack", "homegadgets"]
+      "máy massage cổ": ["neckmassager", "neckmassage", "颈按摩器"]
+      "đồ gia dụng thông minh": ["kitchenhack", "homegadgets", "厨房好物"]
+      "đồ cắm trại": ["camping", "campinggear", "露营装备"]
+
+  # Discord discovery từ attachments trong channels. Cần bot token hoặc user token.
+  discord:
+    bot_token: ""
+    user_token: ""
+    channel_ids: []
+    max_messages: 100
+
+  # Reddit API credentials (lấy từ https://www.reddit.com/prefs/apps)
+  # Có thể dùng read-only mode không cần auth nhưng bị giới hạn rate limit
+  reddit:
+    client_id: ""
+    client_secret: ""
+    user_agent: "VideoPipelineBot/1.0"
+    username: ""
+    password: ""
+    subreddits: ["videos", "Shorts", "TikTokCringe", "funny", "gaming"]
+    limit_per_subreddit: 30
+    sort_by: "hot"              # hot, new, top
+    time_filter: "week"         # hour, day, week, month, year, all
+
+  # Facebook Graph API - Lấy từ https://developers.facebook.com
+  # Cần access token với permissions: pages_read_engagement, groups_access_member
+  facebook:
+    access_token: ""
+    app_id: ""
+    app_secret: ""
+    pages: []                   # Danh sách Page IDs cần quét
+    groups: []                  # Danh sách Group IDs cần quét
+    limit_per_source: 30
+    use_scraper: true           # Dùng scraper thay thế khi không có API
 
 # ---------- 3. LỌC THÔ (trước khi tốn băng thông) ----------
 filters:
