@@ -1,0 +1,16 @@
+# --- bắt buộc ---
+pyyaml>=6.0
+requests>=2.31
+
+# --- discovery/download ---
+yt-dlp>=2025.1.1
+f2>=0.0.1.7            # backend Douyin/TikTok chạy trong process, không cần server
+instaloader>=4.12      # discovery Instagram theo hashtag, dùng session local
+
+# --- cổng chất lượng (khuyến nghị) ---
+pillow>=10.0
+imagehash>=4.3
+
+# --- tuỳ chọn: lọc video không có tiếng người ---
+# torch>=2.2          # cài riêng theo hướng dẫn pytorch.org
+# torchaudio>=2.2

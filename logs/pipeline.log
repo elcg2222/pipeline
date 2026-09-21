@@ -1,0 +1,176 @@
+2026-09-19 03:19:24,389 WARNING stage.discover | bỏ qua provider tiktok: f2=X (chưa cài: pip install f2) | dtk=X (không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+2026-09-19 03:20:17,746 WARNING provider.dytk | [douyin/opencli] lỗi: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:20:17,747 ERROR   provider.dytk | [douyin] tất cả backend fail cho '厨房好物': dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")); f2: chưa cài: pip install f2; opencli: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:21:05,688 WARNING provider.dytk | [douyin/opencli] lỗi: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:21:05,688 ERROR   provider.dytk | [douyin] tất cả backend fail cho 'đồ gia dụng thông minh': dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")); f2: chưa cài: pip install f2; opencli: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:21:05,692 INFO    stage.discover | Discovery xong: thu 0, unique 0, loại 0, vào hàng đợi 0
+2026-09-19 03:23:54,795 WARNING stage.discover | bỏ qua provider tiktok: f2=X (chưa cài: pip install f2) | dtk=X (không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+2026-09-19 03:24:40,683 WARNING provider.dytk | [douyin/opencli] lỗi: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:24:42,725 ERROR   provider.dytk | [douyin] tất cả backend fail cho 'đồ gia dụng thông minh': f2: chưa cài: pip install f2; opencli: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+; dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-09-19 03:24:46,701 INFO    provider.market | [youtube] 'đồ gia dụng thông minh' -> 2 video
+2026-09-19 03:25:32,440 WARNING provider.dytk | [douyin/opencli] lỗi: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:25:34,468 ERROR   provider.dytk | [douyin] tất cả backend fail cho 'máy massage cổ': f2: chưa cài: pip install f2; opencli: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+; dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-09-19 03:25:36,751 INFO    provider.market | [youtube] 'máy massage cổ' -> 21 video
+2026-09-19 03:25:36,759 INFO    stage.discover | Discovery xong: thu 23, unique 23, loại 23, vào hàng đợi 0
+2026-09-19 03:26:06,100 WARNING stage.discover | bỏ qua provider tiktok: f2=X (chưa cài: pip install f2) | dtk=X (không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+2026-09-19 03:26:51,870 WARNING provider.dytk | [douyin/opencli] lỗi: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:26:53,902 ERROR   provider.dytk | [douyin] tất cả backend fail cho 'đồ gia dụng thông minh': f2: chưa cài: pip install f2; opencli: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+; dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-09-19 03:26:56,256 INFO    provider.market | [youtube] 'đồ gia dụng thông minh' -> 5 video
+2026-09-19 03:27:42,052 WARNING provider.dytk | [douyin/opencli] lỗi: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+
+2026-09-19 03:27:44,074 ERROR   provider.dytk | [douyin] tất cả backend fail cho 'máy massage cổ': f2: chưa cài: pip install f2; opencli: exit 69: ok: false
+error:
+  code: BROWSER_CONNECT
+  message: Browser Bridge extension not connected
+  help: |-
+    Make sure Chrome/Chromium is open and the OpenCLI extension is enabled.
+    If not installed:
+      1. Download: https://github.com/jackwener/opencli/releases
+      2. Open chrome://extensions → Developer Mode → Load unpacked
+  exitCode: 69
+; dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-09-19 03:27:47,652 INFO    provider.market | [youtube] 'máy massage cổ' -> 19 video
+2026-09-19 03:27:47,661 INFO    stage.discover | Discovery xong: thu 24, unique 24, loại 0, vào hàng đợi 9
+2026-09-19 03:28:17,429 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:28:21,859 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:28:26,192 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:28:30,517 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:28:34,886 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:29:27,680 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:29:32,003 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:29:36,290 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:29:40,609 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:29:44,997 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:30:22,442 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:30:26,811 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:30:31,118 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:30:35,419 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:30:39,948 WARNING stage.download | FAIL https://www.youtube.com/watch
+2026-09-19 03:32:14,642 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ
+2026-09-19 03:32:18,567 WARNING stage.download | FAIL https://www.youtube.com/watch?v=q7lHh0FjQPc
+2026-09-19 03:32:22,604 WARNING stage.download | FAIL https://www.youtube.com/watch?v=guNqMLxiS1s
+2026-09-19 03:33:15,483 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ
+2026-09-19 03:33:19,307 WARNING stage.download | FAIL https://www.youtube.com/watch?v=q7lHh0FjQPc
+2026-09-19 03:33:23,851 WARNING stage.download | FAIL https://www.youtube.com/watch?v=guNqMLxiS1s
+2026-09-19 03:45:46,684 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ
+2026-09-19 03:45:52,915 WARNING stage.download | FAIL https://www.youtube.com/watch?v=q7lHh0FjQPc
+2026-09-19 03:46:00,494 WARNING stage.download | FAIL https://www.youtube.com/watch?v=guNqMLxiS1s
+2026-09-19 03:46:09,150 WARNING stage.download | FAIL https://www.youtube.com/watch?v=-jPwfppZgoE
+2026-09-19 03:46:15,507 WARNING stage.download | FAIL https://www.youtube.com/watch?v=8_zrd2Jt4S8
+2026-09-21 03:07:29,129 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ | f2 chưa được cấu hình hoặc chưa cài
+2026-09-21 03:08:06,851 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ | ERROR: unable to download video data: HTTP Error 416: Requested range not satisfiable
+
+2026-09-21 03:09:55,416 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ | yt-dlp không tạo được file video
+2026-09-21 03:11:40,364 WARNING stage.download | FAIL https://www.youtube.com/watch?v=vs7e-zGwKuQ | ERROR: [youtube] vs7e-zGwKuQ: Requested format is not available. Use --list-formats for a list of available formats
+
+2026-09-21 05:12:33,718 WARNING stage.import_urls | Không đọc được https://example.com/video: ERROR: [generic] video: Unable to download webpage: HTTPSConnection(host='example.com', port=443): Failed to establish a new connection: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions (caused by TransportError("HTTPSConnection(host='example.com', port=443): Failed to establish a new connection: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions"))
+
