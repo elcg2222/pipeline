@@ -5,6 +5,24 @@ from typing import Callable, Protocol
 from core.schema import VideoItem
 
 
+class BaseProvider:
+    """Base class cho tất cả providers"""
+    
+    name: str = ""
+    description: str = ""
+    
+    def __init__(self, config: dict):
+        self.config = config
+    
+    def available(self) -> tuple[bool, str]:
+        """Kiểm tra provider có sẵn sàng không"""
+        return True, ""
+    
+    def search(self, keyword: str, limit: int) -> list[VideoItem]:
+        """Search videos theo keyword"""
+        raise NotImplementedError
+
+
 class Provider(Protocol):
     name: str
     platform: str

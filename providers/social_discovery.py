@@ -90,6 +90,13 @@ class InstagramProvider:
             return False, "chưa cài: pip install -U instaloader"
         if not self.cfg.get("session_user"):
             return False, "thiếu providers.instagram.session_user (không lưu mật khẩu)"
+        session_file = self.cfg.get("session_file") or None
+        username = self.cfg.get("session_user", "")
+        if not username:
+            return False, "thiếu session_user"
+        # Kiểm tra xem file session có tồn tại không (nếu được chỉ định)
+        if session_file and not Path(session_file).exists():
+            log.warning("File session Instagram không tồn tại: %s", session_file)
         return True, "session Instagram cục bộ"
 
     def _tags(self, topic: str) -> list[str]:
