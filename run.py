@@ -119,7 +119,7 @@ def cmd_all(cfg, store, args):
 
 def cmd_status(cfg, store, args):
     stats = store.stats()
-    order = ["discovered", "queued", "downloading", "downloaded", "exported",
+    order = ["discovered", "queued", "downloading", "downloaded", "qc_passed", "exported",
              "dubbed", "published", "qc_failed", "duplicate", "rejected", "error"]
     print("TRẠNG THÁI PIPELINE")
     for s in order:
@@ -168,6 +168,54 @@ def cmd_recheck(cfg, store, args):
     print({"queued": queued, "still_rejected": still_rejected})
 
 
+def cmd_media(cfg, store, args):
+    """Tìm/tải đa định dạng (ảnh, tin tức, video stock) qua phanmoi bridge."""
+    import json
+    import media_bridge
+
+    if args.subcommand == "search":
+        res = media_bridge.search(args.query, mode=args.type,
+                                  limit=args.limit,
+                                  commercial_only=args.commercial_only)
+        print(f"[{res['mode_label']}] Tìm '{args.query}' -> {res['count']} kết quả\n")
+        if res.get("sources", {}).get("disabled"):
+            print("  Nguồn chưa cấu hình: " + ", ".join(res["sources"]["disabled"]) + "\n")
+        for d in res["docs"]:
+            lic = "TM-OK" if d["commercial_use"] is True else (
+                "CẤM-TM" if d["commercial_use"] is False else "chưa rõ")
+            media = d.get("media_url") or d.get("url") or ""
+            print(f"  {d['score']:.2f} [{d['type']:<5}] [{lic:<8}] {d['title'][:60]}")
+            if media:
+                print(f"      {media}")
+        if args.save:
+            dl = media_bridge.download(res["docs"], args.query,
+                                       download_dir=cfg.get("download_dir", "downloads"),
+                                       max_per_type=args.max_per_type,
+                                       allow_restricted=args.allow_restricted)
+            print(f"\n[kho file] {json.dumps(dl['downloaded'], ensure_ascii=False)}")
+            if dl.get("skipped"):
+                print(f"[bỏ qua] {len(dl['skipped'])} mục (giấy phép/thiếu URL)")
+            if dl.get("failed"):
+                print(f"[lỗi] {len(dl['failed'])} mục")
+            print(f"[manifest] {dl.get('manifest', '')}")
+            print(f"[thư mục] {dl['dir']}")
+
+    elif args.subcommand == "crawl":
+        res = media_bridge.crawl_news(fulltext=args.fulltext)
+        print(f"Kéo tin: +{res['new']} mới, {res['dup']} trùng, kho hiện {res['total']}")
+
+    elif args.subcommand == "archive":
+        res = media_bridge.archive_search(args.query, source_type=args.type,
+                                          limit=args.limit,
+                                          commercial_only=args.commercial_only)
+        print(f"[kho] '{args.query}' -> {res['count']} bản ghi\n")
+        for d in res["docs"]:
+            print(f"  [{d['type']:<5}] {d['source']:<16} {d['title'][:60]}")
+
+    elif args.subcommand == "stats":
+        print(json.dumps(media_bridge.archive_stats(), ensure_ascii=False, indent=2))
+
+
 def cmd_retry(cfg, store, args):
     """Mở lại các item đã hết lượt thử để có thể tải lại sau khi sửa cấu hình."""
     import time
@@ -182,7 +230,7 @@ COMMANDS = {
     "doctor": cmd_doctor, "discover": cmd_discover, "download": cmd_download,
     "qc": cmd_qc, "export": cmd_export, "collect": cmd_collect,
     "all": cmd_all, "status": cmd_status, "add": cmd_add, "recheck": cmd_recheck,
-    "retry": cmd_retry,
+    "retry": cmd_retry, "media": cmd_media,
 }
 
 
@@ -194,6 +242,22 @@ def main():
     ap.add_argument("--limit", type=int, default=20)
     ap.add_argument("--log-level", default="INFO")
     ap.add_argument("--url", action="append", help="URL video công khai để thêm thủ công (dùng với add)")
+
+    # media subcommand args
+    ap.add_argument("subcommand", nargs="?", default=None,
+                    help="(media) search | crawl | archive | stats")
+    ap.add_argument("query", nargs="?", default=None, help="(media) từ khoá chủ đề")
+    ap.add_argument("--type", default="all", help="(media) image|video|news|all")
+    ap.add_argument("--commercial-only", action="store_true",
+                    help="(media) chỉ lấy nội dung dùng thương mại được")
+    ap.add_argument("--save", action="store_true",
+                    help="(media search) tải file thật về máy")
+    ap.add_argument("--max-per-type", type=int, default=0,
+                    help="(media search --save) giới hạn số file mỗi loại, 0=không giới hạn")
+    ap.add_argument("--allow-restricted", action="store_true",
+                    help="(media search --save) cho phép lưu nội dung bị đánh dấu cấm thương mại")
+    ap.add_argument("--fulltext", action="store_true",
+                    help="(media crawl) bóc toàn văn bài báo")
     args = ap.parse_args()
 
     cfg = load_config(args.config)

@@ -1,26 +1,21 @@
-# ============================================================
-#  SOCIAL TREND PIPELINE v2 - cấu hình
-#  Sửa file này là đủ, không cần đụng vào code.
-# ============================================================
-
+bridge:
+  auto_export: false
+  dubbed_dir: outputs/dubbed
+  rclone_remote: ''
+  require_qc: false
+  staging_dir: outputs/to_autodub
+  upload_timeout: 3600
 db_path: data/pipeline.db
+download:
+  cookies_file: ''
+  cookies_from_browser: ''
+  delay_seconds: 2
+  f2_config: ''
+  max_attempts: 3
+  proxy: null
+  timeout: 300
+  ytdlp_format: bv*[height<=1080]+ba/b[height<=1080]/b
 download_dir: downloads
-log_file: logs/pipeline.log
-
-# ---------- 1. TỪ KHOÁ ----------
-# Mẹo: đặt từ khoá bằng TIẾNG TRUNG cho Douyin/1688 sẽ ra kết quả gấp 10 lần.
-topics:
-  - 颈椎按摩仪            # máy massage cổ
-  - 厨房好物              # đồ gia dụng nhà bếp
-  - 露营装备              # đồ cắm trại
-  - máy massage cổ
-  - đồ gia dụng thông minh
-
-results_per_keyword: 30
-top_n_per_run: 20            # số video tối đa đưa vào hàng đợi mỗi lần chạy
-max_per_author: 2            # chống 1 kênh chiếm hết top
-
-# ---------- 2. NGUỒN ----------
 enabled_providers:
   douyin: true
   tiktok: true
@@ -29,131 +24,122 @@ enabled_providers:
   reddit: true
   instagram: true
   discord: true
-
-providers:
-  douyin:
-    backends: [f2, opencli, dtk]
-    dtk_base_url: http://127.0.0.1:8080
-    dtk_token: ""
-    douyin_cookie: ""
-    proxy: null
-    sleep_range: [2.0, 5.0]
-
-  tiktok:
-    backends: [f2, dtk]
-    tiktok_cookie: ""
-    proxy: null
-    sleep_range: [1.5, 4.0]
-
-  1688:
-    min_sold: 300            # bỏ qua sản phẩm bán dưới 300 đơn
-    timeout: 240
-
-  youtube: {}
-
-  # Reddit discovery: OpenCLI -> metadata -> yt-dlp tải file.
-  reddit:
-    max_results: 30
-    timeout: 120
-
-  # Instagram discovery theo hashtag. Không lưu password trong file này.
-  # Tạo/đặt session cục bộ rồi điền username + đường dẫn session vào đây.
-  # Chỉ những topic có trong topic_hashtags mới được quét, tránh hashtag sai nghĩa.
-  instagram:
-    session_user: ""
-    session_file: ""
-    max_per_hashtag: 20
-    use_topic_as_hashtag: true
-    topic_hashtags:
-      "máy massage cổ": ["neckmassager", "neckmassage", "颈按摩器"]
-      "đồ gia dụng thông minh": ["kitchenhack", "homegadgets", "厨房好物"]
-      "đồ cắm trại": ["camping", "campinggear", "露营装备"]
-
-  # Discord discovery từ attachments trong channels. Cần bot token hoặc user token.
-  discord:
-    bot_token: ""
-    user_token: ""
-    channel_ids: []
-    max_messages: 100
-
-  # Reddit API credentials (lấy từ https://www.reddit.com/prefs/apps)
-  # Có thể dùng read-only mode không cần auth nhưng bị giới hạn rate limit
-  reddit:
-    client_id: ""
-    client_secret: ""
-    user_agent: "VideoPipelineBot/1.0"
-    username: ""
-    password: ""
-    subreddits: ["videos", "Shorts", "TikTokCringe", "funny", "gaming"]
-    limit_per_subreddit: 30
-    sort_by: "hot"              # hot, new, top
-    time_filter: "week"         # hour, day, week, month, year, all
-
-  # Facebook Graph API - Lấy từ https://developers.facebook.com
-  # Cần access token với permissions: pages_read_engagement, groups_access_member
-  facebook:
-    access_token: ""
-    app_id: ""
-    app_secret: ""
-    pages: []                   # Danh sách Page IDs cần quét
-    groups: []                  # Danh sách Group IDs cần quét
-    limit_per_source: 30
-    use_scraper: true           # Dùng scraper thay thế khi không có API
-
-# ---------- 3. LỌC THÔ (trước khi tốn băng thông) ----------
-filters:
-  min_views: 0
-  min_likes: 0
-  min_duration: 3
-  max_duration: 300
-  max_age_hours: 8760
-  blocklist_keywords: []
-  require_any_keywords: []
-
-# ---------- 4. CHẤM ĐIỂM ----------
-weights:
-  reach: 0.20                # quy mô view (log)
-  engagement: 0.25           # like + 3*comment + 5*share
-  save: 0.20                 # lượt lưu -> tín hiệu ý định mua mạnh nhất
-  freshness: 0.15
-  velocity: 0.20             # view tăng/giờ giữa 2 lần crawl
-
+  bilibili: false
 engagement_ceiling: 0.25
-save_rate_ceiling: 0.05
+filters:
+  blocklist_keywords: []
+  max_age_hours: 8760
+  max_duration: 300
+  min_duration: 3
+  min_likes: 0
+  min_views: 0
+  require_any_keywords: []
 freshness_halflife_hours: 72
-
+log_file: logs/pipeline.log
+max_per_author: 2
 platform_boost:
-  douyin: 1.15               # video gốc TQ thường là bản chất lượng nhất
-  tiktok: 1.00
+  douyin: 1.15
+  tiktok: 1.0
   1688: 0.95
   youtube: 0.85
-
-# ---------- 5. TẢI VIDEO ----------
-download:
-  ytdlp_format: "bv*[height<=1080]+ba/b[height<=1080]/b"
-  timeout: 300
-  max_attempts: 3
-  delay_seconds: 2
-  cookies_from_browser: ""
-  cookies_file: ""
-  f2_config: ""                  # đường dẫn tới file config f2 nếu dùng fallback f2
-  proxy: null
-
-# ---------- 6. CỔNG CHẤT LƯỢNG ----------
+providers:
+  douyin:
+    backends:
+    - f2
+    - opencli
+    - dtk
+    douyin_cookie: ''
+    dtk_base_url: http://127.0.0.1:8080
+    dtk_token: ''
+    proxy: null
+    sleep_range:
+    - 2.0
+    - 5.0
+  tiktok:
+    backends:
+    - f2
+    - dtk
+    proxy: null
+    sleep_range:
+    - 1.5
+    - 4.0
+    tiktok_cookie: ''
+  1688:
+    min_sold: 300
+    timeout: 240
+  youtube: {}
+  reddit:
+    client_id: ''
+    client_secret: ''
+    limit_per_subreddit: 30
+    password: ''
+    sort_by: hot
+    subreddits:
+    - videos
+    - Shorts
+    - TikTokCringe
+    - funny
+    - gaming
+    time_filter: week
+    user_agent: VideoPipelineBot/1.0
+    username: ''
+  instagram:
+    max_per_hashtag: 20
+    session_file: ''
+    session_user: ''
+    topic_hashtags:
+      máy massage cổ:
+      - neckmassager
+      - neckmassage
+      - 颈按摩器
+      đồ cắm trại:
+      - camping
+      - campinggear
+      - 露营装备
+      đồ gia dụng thông minh:
+      - kitchenhack
+      - homegadgets
+      - 厨房好物
+    use_topic_as_hashtag: true
+  discord:
+    bot_token: ''
+    channel_ids:
+    - '1552552609204928573'
+    max_messages: 100
+    user_token: ''
+  facebook:
+    access_token: ''
+    app_id: ''
+    app_secret: ''
+    groups: []
+    limit_per_source: 30
+    pages: []
+    use_scraper: true
 qc:
-  require_audio: false          # Đã tắt theo yêu cầu: chấp nhận cả video không tiếng / chỉ có OCR
-  min_height: 720              # Nâng lên 720p để đảm bảo chất lượng hình ảnh cao
+  check_phash: true
+  check_speech: false
   min_duration: 8
-  check_phash: true            # Chống trùng nội dung video
-  phash_distance: 6
-  check_speech: false          # Tắt kiểm tra tiếng nói
+  min_height: 720
   min_speech_ratio: 0.0
-
-# ---------- 7. CẦU NỐI AUTODUB ----------
-bridge:
-  staging_dir: outputs/to_autodub
-  dubbed_dir: outputs/dubbed
-  rclone_remote: ""            # Để trống: không cần đẩy đi đâu cả
-  require_qc: false
-  auto_export: false           # Tắt tự động export
-  upload_timeout: 3600
+  phash_distance: 6
+  require_audio: false
+results_per_keyword: 30
+save_rate_ceiling: 0.05
+top_n_per_run: 20
+# --- Giới hạn số lượng tải về (thêm rõ ràng) ---
+limits:
+  per_topic: 30        # số video tối đa quét về cho MỖI từ khoá/chủ đề
+  per_channel: 20      # số video tối đa tải từ MỘT kênh Douyin
+  top_n_per_run: 20    # tổng số video giữ lại sau khi chấm điểm (mỗi lần chạy)
+topics:
+- 颈椎按摩仪
+- 厨房好物
+- 露营装备
+- máy massage cổ
+- đồ gia dụng thông minh
+weights:
+  engagement: 0.25
+  freshness: 0.15
+  reach: 0.2
+  save: 0.2
+  velocity: 0.2

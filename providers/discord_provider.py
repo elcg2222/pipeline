@@ -6,6 +6,7 @@ Sử dụng discord.py để fetch messages và extract video URLs.
 from __future__ import annotations
 
 import logging
+import os
 from typing import Any
 
 from core.schema import VideoItem, coerce_int
@@ -20,13 +21,13 @@ class DiscordProvider:
 
     def __init__(self, cfg: dict):
         self.cfg = cfg.get("providers", {}).get("discord", {})
-        self.token = self.cfg.get("bot_token") or self.cfg.get("user_token")
+        self.token = os.getenv("DISCORD_BOT_TOKEN") or self.cfg.get("bot_token")
         self.channel_ids = self.cfg.get("channel_ids", [])
         self.max_messages = self.cfg.get("max_messages", 100)
 
     def available(self) -> tuple[bool, str]:
         if not self.token:
-            return False, "thiếu discord.bot_token hoặc discord.user_token trong config"
+            return False, "thiếu DISCORD_BOT_TOKEN hoặc providers.discord.bot_token"
         try:
             import discord  # noqa: F401
             return True, "discord.py đã cài + có token"
@@ -57,60 +58,44 @@ class DiscordProvider:
 
         async def fetch_videos():
             nonlocal out
-            await client.wait_until_ready()
-            
-            for channel_id in self.channel_ids:
-                try:
-                    channel = await client.fetch_channel(int(channel_id))
-                    if not isinstance(channel, discord.TextChannel):
-                        continue
-                    
-                    count = 0
-                    async for message in channel.history(limit=self.max_messages):
-                        if count >= limit:
-                            break
-                        
-                        # Filter by keyword nếu có
-                        if keyword and keyword.lower() not in message.content.lower():
+            await client.login(self.token)
+            try:
+                for channel_id in self.channel_ids:
+                    try:
+                        channel = await client.fetch_channel(int(channel_id))
+                        if not isinstance(channel, discord.TextChannel):
                             continue
-                        
-                        for attachment in message.attachments:
-                            if attachment.filename.lower().endswith(('.mp4', '.mov', '.avi', '.webm')):
-                                count += 1
-                                out.append(VideoItem(
-                                    platform="discord",
-                                    url=attachment.url,
-                                    native_id=f"{channel_id}_{message.id}_{attachment.id}",
-                                    title=message.content[:200] if message.content else f"Attachment từ {message.author}",
-                                    author=str(message.author) if message.author else "unknown",
-                                    author_id=str(message.author.id) if message.author else "",
-                                    views=0,
-                                    likes=0,
-                                    comments=0,
-                                    duration=0.0,
-                                    created_at=message.created_at.timestamp(),
-                                    cover_url="",
-                                    topic=keyword,
-                                    source="discord:attachments",
-                                    raw={
-                                        "channel_id": str(channel_id),
-                                        "message_id": str(message.id),
-                                        "filename": attachment.filename,
-                                        "size": attachment.size,
-                                    },
-                                ))
-                                
-                                if count >= limit:
-                                    break
-                except Exception as exc:
-                    log.warning("[discord] channel %s lỗi: %s", channel_id, exc)
-            
-            await client.close()
+                        count = 0
+                        async for message in channel.history(limit=self.max_messages):
+                            if count >= limit:
+                                break
+                            if keyword and keyword.lower() not in message.content.lower():
+                                continue
+                            for attachment in message.attachments:
+                                if attachment.filename.lower().endswith(('.mp4', '.mov', '.avi', '.webm')):
+                                    count += 1
+                                    out.append(VideoItem(
+                                        platform="discord", url=attachment.url,
+                                        native_id=f"{channel_id}_{message.id}_{attachment.id}",
+                                        title=message.content[:200] if message.content else f"Attachment từ {message.author}",
+                                        author=str(message.author) if message.author else "unknown",
+                                        author_id=str(message.author.id) if message.author else "",
+                                        created_at=message.created_at.timestamp(), topic=keyword,
+                                        source="discord:attachments",
+                                        raw={"channel_id": str(channel_id), "message_id": str(message.id),
+                                             "filename": attachment.filename, "size": attachment.size},
+                                    ))
+                                    if count >= limit:
+                                        break
+                    except Exception as exc:
+                        log.warning("[discord] channel %s lỗi: %s", channel_id, exc)
+            finally:
+                await client.close()
 
         # Chạy async event loop
         import asyncio
         try:
-            asyncio.run(client.start(self.token))
+            asyncio.run(fetch_videos())
         except Exception as exc:
             log.error("[discord] lỗi khi fetch: %s", exc)
 

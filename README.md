@@ -50,7 +50,7 @@ Vì không backend nào của Douyin sống quá 3 tháng mà không vỡ, code 
               │     Silero VAD (có tiếng người không?)        │
               │     pHash 5 khung (trùng nội dung?)           │
               └───────────────────┬──────────────────────────┘
-                                  ▼  qc_passed
+                                  ▼  state = qc_passed
               ┌──────────────────────────────────────────────┐
               │ BRIDGE  rclone → Drive/autodub/inbox/<batch>  │
               │         + jobs.jsonl (có style, target_lang)  │
@@ -129,12 +129,18 @@ python run.py status                   # xem pipeline đang tắc ở đâu
 python run.py recheck                  # xét lại video rejected theo cấu hình hiện tại
 python run.py retry                    # mở lại các video đã hết lượt thử tải
 python run.py add --url "https://www.instagram.com/reel/..."  # thêm URL công khai
+python run.py media search "meme" --type image --commercial-only --save
 ```
 
 `add` dùng yt-dlp, nên có thể nhận URL công khai từ Facebook, Instagram và
 nhiều website khác mà yt-dlp hỗ trợ. Nội dung riêng tư, DRM, hoặc bị website
 chặn vẫn không thể tải chỉ bằng công cụ này; dùng cookie của tài khoản có quyền
 truy cập trong `download.cookies_from_browser` khi phù hợp.
+
+`media search --save` tải song song qua file `.part`, retry khi mạng chập chờn,
+xác minh ảnh và ghi `manifest.jsonl` cạnh file để giữ nguồn cùng thông tin giấy
+phép. Nội dung bị đánh dấu cấm thương mại sẽ không được lưu, trừ khi chủ động
+thêm `--allow-restricted`.
 
 ### Discovery Reddit + Instagram
 

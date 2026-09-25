@@ -186,3 +186,83 @@ error:
 2026-09-21 13:53:14,038 WARNING stage.discover | bỏ qua provider discord: thiếu discord.bot_token hoặc discord.user_token trong config
 2026-09-21 13:53:16,500 INFO    provider.market | [youtube] 'máy massage cổ' -> 13 video
 2026-09-21 13:53:16,504 INFO    stage.discover | Discovery xong: thu 13, unique 13, loại 0, vào hàng đợi 9
+2026-09-24 13:21:47,010 WARNING stage.import_urls | Không đọc được https://discord.com/channels/1358623545860690011/xvEdaFQt7: ERROR: Unsupported URL: https://discord.com/channels/1358623545860690011/xvEdaFQt7
+
+2026-09-24 13:42:24,701 WARNING stage.discover | bỏ qua provider tiktok: f2=X (thiếu DOUYIN_COOKIE / TIKTOK_COOKIE (copy từ DevTools > Network > request header)) | dtk=X (không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+2026-09-24 13:42:24,751 WARNING stage.discover | bỏ qua provider instagram: thiếu providers.instagram.session_user (không lưu mật khẩu)
+2026-09-24 13:42:25,575 ERROR   stage.discover | không khởi tạo được provider bilibili: "provider không tồn tại: bilibili. Có: ['douyin', 'tiktok', 'reddit', 'instagram', 'discord', '1688', 'youtube']"
+2026-09-24 13:42:47,429 WARNING provider.dytk | [douyin/opencli] lỗi: exit 77: ok: false
+error:
+  code: AUTH_REQUIRED
+  message: Douyin search results are blocked behind a login wall — log in at https://www.douyin.com in Chrome first.
+  help: Please open Chrome or Chromium and log in to https://www.douyin.com
+  exitCode: 77
+
+2026-09-24 13:42:49,457 ERROR   provider.dytk | [douyin] tất cả backend fail cho 'test': f2: thiếu DOUYIN_COOKIE / TIKTOK_COOKIE (copy từ DevTools > Network > request header); opencli: exit 77: ok: false
+error:
+  code: AUTH_REQUIRED
+  message: Douyin search results are blocked behind a login wall — log in at https://www.douyin.com in Chrome first.
+  help: Please open Chrome or Chromium and log in to https://www.douyin.com
+  exitCode: 77
+; dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-09-24 13:42:52,685 INFO    provider.market | [youtube] 'test' -> 12 video
+2026-09-24 13:43:00,833 INFO    provider.social | [reddit] 'test' -> 12 video
+2026-09-24 13:43:00,877 WARNING discord.client | PyNaCl is not installed, voice will NOT be supported
+2026-09-24 13:43:00,877 WARNING discord.client | davey is not installed, voice will NOT be supported
+2026-09-24 13:43:00,880 INFO    discord.client | logging in using static token
+2026-09-24 13:43:02,666 INFO    discord.gateway | Shard ID None has connected to Gateway (Session ID: aeded2a7dcd426b308173379eb4a5219).
+2026-09-24 19:22:15,592 INFO    httpx | HTTP Request: GET https://api.openverse.org/v1/images/?q=m%C3%A1y%20massage&page_size=5 "HTTP/1.1 200 OK"
+2026-09-24 19:22:24,223 INFO    httpx | HTTP Request: GET https://api.openverse.org/v1/images/?q=m%C3%A1y%20massage&page_size=3 "HTTP/1.1 200 OK"
+2026-09-24 19:22:24,657 INFO    httpx | HTTP Request: GET https://upload.wikimedia.org/wikipedia/commons/2/2c/M%C3%A1y_massage_b%E1%BB%A5ng_%C4%91%E1%BB%A9ng.jpg "HTTP/1.1 403 Forbidden"
+2026-09-24 19:22:25,041 INFO    httpx | HTTP Request: GET https://upload.wikimedia.org/wikipedia/commons/0/03/M%C3%A1y_massage_Xiaomi.jpg "HTTP/1.1 403 Forbidden"
+2026-09-24 19:22:38,904 INFO    httpx | HTTP Request: GET https://api.openverse.org/v1/images/?q=m%C3%A1y%20massage&page_size=3 "HTTP/1.1 200 OK"
+2026-09-24 19:22:39,970 INFO    httpx | HTTP Request: GET https://upload.wikimedia.org/wikipedia/commons/2/2c/M%C3%A1y_massage_b%E1%BB%A5ng_%C4%91%E1%BB%A9ng.jpg "HTTP/1.1 200 OK"
+2026-09-24 19:22:44,056 INFO    httpx | HTTP Request: GET https://upload.wikimedia.org/wikipedia/commons/0/03/M%C3%A1y_massage_Xiaomi.jpg "HTTP/1.1 429 Too Many Requests (015d12c)"
+2026-09-24 19:24:39,343 INFO    httpx | HTTP Request: GET https://api.openverse.org/v1/images/?q=AI%20robot&page_size=10 "HTTP/1.1 200 OK"
+2026-09-24 19:24:46,054 INFO    httpx | HTTP Request: GET https://upload.wikimedia.org/wikipedia/commons/3/38/Amosov%27s_AI_robots.png "HTTP/1.1 404 Not Found"
+2026-09-24 19:24:47,167 INFO    httpx | HTTP Request: GET https://upload.wikimedia.org/wikipedia/commons/7/75/2008Computex_DMnP_AI_Robot.jpg "HTTP/1.1 200 OK"
+2026-09-25 06:49:04,171 WARNING stage.discover | bỏ qua provider tiktok: f2=X (thiếu DOUYIN_COOKIE / TIKTOK_COOKIE (copy từ DevTools > Network > request header)) | dtk=X (không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")))
+2026-09-25 06:49:04,368 WARNING stage.discover | bỏ qua provider instagram: thiếu providers.instagram.session_user (không lưu mật khẩu)
+2026-09-25 06:49:05,899 ERROR   stage.discover | không khởi tạo được provider bilibili: "provider không tồn tại: bilibili. Có: ['douyin', 'tiktok', 'reddit', 'instagram', 'discord', '1688', 'youtube']"
+2026-09-25 06:49:26,281 WARNING provider.dytk | [douyin/opencli] lỗi: exit 1: ok: false
+error:
+  code: COMMAND_EXEC
+  message: 'Pre-navigation to https://www.douyin.com failed: Detached while handling command.'
+  help: Check that the site is reachable and the browser extension is running.
+  exitCode: 1
+  cause: Detached while handling command.
+
+2026-09-25 06:49:28,317 ERROR   provider.dytk | [douyin] tất cả backend fail cho '颈椎按摩仪': f2: thiếu DOUYIN_COOKIE / TIKTOK_COOKIE (copy từ DevTools > Network > request header); opencli: exit 1: ok: false
+error:
+  code: COMMAND_EXEC
+  message: 'Pre-navigation to https://www.douyin.com failed: Detached while handling command.'
+  help: Check that the site is reachable and the browser extension is running.
+  exitCode: 1
+  cause: Detached while handling command.
+; dtk: không kết nối được http://127.0.0.1:8080: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8080): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-09-25 06:49:35,052 INFO    provider.market | [youtube] '颈椎按摩仪' -> 28 video
+2026-09-25 06:49:47,000 INFO    provider.social | [reddit] '颈椎按摩仪' -> 0 video
+2026-09-25 06:49:47,193 WARNING discord.client | PyNaCl is not installed, voice will NOT be supported
+2026-09-25 06:49:47,193 WARNING discord.client | davey is not installed, voice will NOT be supported
+2026-09-25 06:49:47,210 INFO    discord.client | logging in using static token
+2026-09-25 06:49:50,103 INFO    discord.gateway | Shard ID None has connected to Gateway (Session ID: 1ad39151e97450bf31df2d3a9d67f343).
+2026-09-25 07:52:07,140 INFO    discord.gateway | Shard ID None has successfully RESUMED session 1ad39151e97450bf31df2d3a9d67f343.
+2026-09-26 01:49:36,267 INFO    httpx | HTTP Request: GET https://api.openverse.org/v1/images/?q=meme&page_size=20 "HTTP/1.1 200 OK"
+2026-09-26 01:49:37,104 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/7150/6697055189_f947d7a7a7.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:38,080 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/7621/16763345346_a3e11fa301.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:38,726 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/645/21527966829_2d172c793b_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:39,429 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/3658/3305707383_fd4b47e7d6.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:40,345 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/4785/27066951778_bafc2d1d97_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:41,340 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/16/21286054_7895cc9ab9.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:42,160 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/713/21742619125_f9672a76b9.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:43,111 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/264/19718083479_d6589c5404_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:43,994 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/7394/9020301681_a5010c2a7d_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:44,820 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/3017/2567575837_8433e8e2d3_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:45,663 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/5820/21526952108_7950b7968c_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:46,307 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/461/19716640900_9cc0692d77_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:47,037 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/65535/50171296303_2a2c9484d8_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:49:47,820 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/3534/3257695692_377b4f586b_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:59:49,074 INFO    httpx | HTTP Request: GET https://api.openverse.org/v1/images/?q=meme%20cat&page_size=8 "HTTP/1.1 200 OK"
+2026-09-26 01:59:49,627 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/713/21742619125_f9672a76b9.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:59:50,038 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/65535/54815758415_2f08e864dd_b.jpg "HTTP/1.1 200 OK"
+2026-09-26 01:59:50,059 INFO    httpx | HTTP Request: GET https://live.staticflickr.com/8091/8476322420_011dbea338_b.jpg "HTTP/1.1 200 OK"

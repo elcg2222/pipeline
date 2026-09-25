@@ -22,7 +22,8 @@ log = logging.getLogger("stage.discover")
 def run(store: Store, cfg: dict, topics: list[str] | None = None) -> dict:
     topics = topics or cfg["topics"]
     enabled = [p for p, on in cfg.get("enabled_providers", {}).items() if on]
-    per_kw = cfg.get("results_per_keyword", 30)
+    limits = cfg.get("limits", {})
+    per_kw = limits.get("per_topic", cfg.get("results_per_keyword", 30))
     started = time.time()
 
     providers = {}
@@ -73,7 +74,7 @@ def run(store: Store, cfg: dict, topics: list[str] | None = None) -> dict:
         scored.append(it)
 
     # --- chọn Top N, giới hạn số video / tác giả ---
-    top_n = cfg.get("top_n_per_run", 20)
+    top_n = limits.get("top_n_per_run", cfg.get("top_n_per_run", 20))
     picked = apply_diversity(scored, cfg.get("max_per_author", 2))[:top_n]
 
     queued = 0

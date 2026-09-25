@@ -17,6 +17,7 @@ STATES = (
     "queued",        # đã qua scoring + lọc, chờ tải
     "downloading",
     "downloaded",
+    "qc_passed",     # đã qua cổng chất lượng, sẵn sàng xuất AutoDub
     "qc_failed",     # tải xong nhưng không đạt chất lượng -> bỏ
     "duplicate",     # trùng nội dung (phash) với video đã có
     "exported",      # đã đẩy sang AutoDub

@@ -51,8 +51,12 @@ def export(store: Store, cfg: dict, limit: int = 20) -> dict:
     out = staging / batch
     out.mkdir(parents=True, exist_ok=True)
 
-    rows = [r for r in store.pick("downloaded", limit=limit)
-            if r["last_error"] == "qc_passed" or not b.get("require_qc", True)]
+    if b.get("require_qc", True):
+        rows = store.pick("qc_passed", limit=limit)
+    else:
+        rows = store.pick("qc_passed", limit=limit)
+        if len(rows) < limit:
+            rows += store.pick("downloaded", limit=limit - len(rows))
     if not rows:
         log.info("Không có video nào đã qua QC để xuất.")
         shutil.rmtree(out, ignore_errors=True)

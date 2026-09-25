@@ -159,9 +159,7 @@ def run(store: Store, cfg: dict, limit: int = 50) -> dict:
                 dup += 1
                 continue
 
-        store.set_state(uid, "downloaded", phash=ph)
-        store.conn.execute("UPDATE videos SET last_error='qc_passed' WHERE uid=?", (uid,))
-        store.conn.commit()
+        store.set_state(uid, "qc_passed", phash=ph, last_error="")
         ok += 1
 
     store.log_run("qc", "", started, ok, dropped + dup, f"dup={dup}")

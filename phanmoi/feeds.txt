@@ -1,0 +1,39 @@
+# Mỗi dòng: <url_rss> | <tên_hiển_thị>
+# Dòng bắt đầu bằng # bị bỏ qua. Thêm nguồn mới = thêm một dòng.
+#
+# LƯU Ý: đường dẫn RSS của các báo có thể thay đổi. Chạy
+#   python main.py crawl news
+# nếu thấy một dòng báo LỖI hoặc +0 liên tục thì vào trang chủ báo đó
+# tìm lại link RSS hiện hành.
+
+# ---------- Báo Việt Nam ----------
+https://vnexpress.net/rss/tin-moi-nhat.rss          | vnexpress
+https://vnexpress.net/rss/so-hoa.rss                | vnexpress-sohoa
+https://vnexpress.net/rss/kinh-doanh.rss            | vnexpress-kinhdoanh
+https://tuoitre.vn/rss/tin-moi-nhat.rss             | tuoitre
+https://tuoitre.vn/rss/nhip-song-so.rss             | tuoitre-congnghe
+https://thanhnien.vn/rss/home.rss                   | thanhnien
+https://dantri.com.vn/rss/home.rss                  | dantri
+https://dantri.com.vn/rss/suc-manh-so.rss           | dantri-congnghe
+https://vietnamnet.vn/rss/tin-moi-nong.rss          | vietnamnet
+https://cafef.vn/trang-chu.rss                      | cafef
+
+# ---------- Công nghệ / AI quốc tế ----------
+https://techcrunch.com/feed/                        | techcrunch
+https://www.theverge.com/rss/index.xml              | theverge
+https://arstechnica.com/feed/                       | arstechnica
+https://www.wired.com/feed/rss                      | wired
+https://hnrss.org/frontpage                         | hackernews
+https://export.arxiv.org/rss/cs.AI                  | arxiv-cs-ai
+https://export.arxiv.org/rss/cs.CL                  | arxiv-cs-cl
+
+# ---------- Tin tổng hợp quốc tế ----------
+https://feeds.bbci.co.uk/news/world/rss.xml         | bbc-world
+https://feeds.bbci.co.uk/news/technology/rss.xml    | bbc-tech
+https://www.aljazeera.com/xml/rss/all.xml           | aljazeera
+https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml | nyt-tech
+
+# ---------- Mẹo: Google News RSS theo từ khoá ----------
+# Thay QUERY bằng từ khoá, đây là cách rẻ nhất để có "tin nhanh theo chủ đề"
+# https://news.google.com/rss/search?q=QUERY&hl=vi&gl=VN&ceid=VN:vi | gnews-QUERY
+https://news.google.com/rss/search?q=AI+agent&hl=vi&gl=VN&ceid=VN:vi | gnews-aiagent

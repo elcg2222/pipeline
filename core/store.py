@@ -76,6 +76,11 @@ class Store:
         self.conn.execute("PRAGMA journal_mode=WAL")
         self.conn.execute("PRAGMA synchronous=NORMAL")
         self.conn.executescript(SCHEMA)
+        # Migration nhẹ cho bản cũ: QC từng được đánh dấu nhầm trong last_error.
+        self.conn.execute(
+            "UPDATE videos SET state='qc_passed', last_error='' "
+            "WHERE state='downloaded' AND last_error='qc_passed'"
+        )
         self.conn.commit()
 
     # ---------- ghi ----------
@@ -181,7 +186,7 @@ class Store:
             return None
         rows = self.conn.execute(
             "SELECT uid, phash FROM videos WHERE phash IS NOT NULL AND phash!='' "
-            "AND state IN ('downloaded','exported','dubbed','published')"
+            "AND state IN ('qc_passed','exported','dubbed','published')"
         ).fetchall()
         for r in rows:
             try:
