@@ -54,8 +54,35 @@ def hard_filter(item: VideoItem, cfg: dict) -> str | None:
     return None
 
 
+# ---------------- Outlier Detection (Học từ ViralMint) ----------------
+OUTLIER_THRESHOLDS = [
+    (20.0, "MONSTER"),     # 20x+ median: cực kỳ viral
+    (10.0, "BREAKOUT"),    # 10x+ median: video đột phá
+    (5.0,  "STRONG"),      # 5x+ median: vượt trội mạnh
+    (3.0,  "OUTLIER"),     # 3x+ median: vượt trung bình
+]
+
+
+def classify_outlier(outlier_score: float) -> str | None:
+    if not outlier_score or outlier_score < 3.0:
+        return None
+    for threshold, label in OUTLIER_THRESHOLDS:
+        if outlier_score >= threshold:
+            return label
+    return None
+
+
+def calculate_outlier_score(views: int, author_median_views: float | None = None) -> tuple[float, str | None]:
+    """Tính Outlier Score dựa trên tỷ lệ Views / Author_Median_Views."""
+    if not views or not author_median_views or author_median_views <= 0:
+        return 1.0, None
+    score_ratio = round(views / author_median_views, 2)
+    label = classify_outlier(score_ratio)
+    return score_ratio, label
+
+
 # ---------------- Score ----------------
-def score(item: VideoItem, cfg: dict, velocity: float = 0.0) -> tuple[float, dict]:
+def score(item: VideoItem, cfg: dict, velocity: float = 0.0, author_median_views: float | None = None) -> tuple[float, dict]:
     w = cfg.get("weights", {})
     v = max(item.views, 1)
 
@@ -77,12 +104,17 @@ def score(item: VideoItem, cfg: dict, velocity: float = 0.0) -> tuple[float, dic
     # 5) Tốc độ lan: log velocity
     s_vel = min(math.log10(velocity + 1) / 4.0, 1.0)    # 10k view/h -> 1.0
 
+    # 6) Outlier Detection Boost (ViralMint)
+    outlier_ratio, outlier_label = calculate_outlier_score(item.views, author_median_views)
+    s_outlier = min(outlier_ratio / 10.0, 1.0) if outlier_ratio > 1.0 else 0.0
+
     total = (
-        w.get("reach", 0.20) * s_reach
-        + w.get("engagement", 0.25) * s_eng
-        + w.get("save", 0.20) * s_save
+        w.get("reach", 0.15) * s_reach
+        + w.get("engagement", 0.20) * s_eng
+        + w.get("save", 0.15) * s_save
         + w.get("freshness", 0.15) * s_fresh
-        + w.get("velocity", 0.20) * s_vel
+        + w.get("velocity", 0.15) * s_vel
+        + w.get("outlier", 0.20) * s_outlier
     )
 
     # Ưu tiên nền tảng (Douyin thường là nguồn gốc, chất lượng review cao nhất)
@@ -92,6 +124,7 @@ def score(item: VideoItem, cfg: dict, velocity: float = 0.0) -> tuple[float, dic
         "reach": round(s_reach, 3), "engagement": round(s_eng, 3),
         "save": round(s_save, 3), "freshness": round(s_fresh, 3),
         "velocity": round(s_vel, 3), "velocity_raw": round(velocity, 1),
+        "outlier_score": outlier_ratio, "outlier_label": outlier_label,
     }
     return round(total, 4), detail
 

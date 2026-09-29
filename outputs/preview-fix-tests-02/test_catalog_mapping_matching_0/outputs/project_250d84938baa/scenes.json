@@ -1,0 +1,25 @@
+[
+  {
+    "scene_id": "scene_001",
+    "chapter_id": "",
+    "narration": "Một chú mèo.",
+    "estimated_duration_sec": 3.0,
+    "visual_intent": "Mèo vui",
+    "source_ids": [],
+    "asset_ids": [
+      "4eec7c7373e9dbb9f1b9"
+    ],
+    "trim_in": 0.0,
+    "trim_out": 0.0,
+    "framing": "",
+    "on_screen_text": "",
+    "text_effect": "fade",
+    "playback_rate": 1.0,
+    "review_notes": "",
+    "match_method": "metadata_keywords",
+    "match_reason": "meo, vui",
+    "needs_visual_review": true,
+    "alternatives": [],
+    "status": "ready"
+  }
+]

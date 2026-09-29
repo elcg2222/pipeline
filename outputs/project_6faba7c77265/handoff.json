@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "project_id": "project_6faba7c77265",
+  "script_revision": 1,
+  "aspect_ratio": "9:16",
+  "target_duration_sec": 4.0,
+  "scene_order": [
+    "scene_001",
+    "scene_002"
+  ],
+  "media_root": "media/",
+  "subtitles_file": "subtitles.srt",
+  "missing_assets": [],
+  "missing_audio": [],
+  "status": "preview_draft",
+  "preview_profile": "preview_profile.json",
+  "revision": 2,
+  "audio_role": "reference_only",
+  "final_voiceover_required": true
+}

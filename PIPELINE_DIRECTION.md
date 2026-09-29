@@ -1,6 +1,111 @@
 # Định hướng pipeline chuẩn bị sản xuất video
 
+## Quy tắc bàn giao hiện hành — 28/09/2026
+
+- Một dự án là một thư mục `project_<id>` chứa roadmap, kịch bản, profile,
+  manifest và toàn bộ asset thực dùng. Agent sau đưa cả thư mục/ZIP lên Kaggle.
+- Dự án mới mặc định `auto`: tỷ lệ được chốt một lần theo asset đã chọn đầu tiên;
+  nếu chưa đọc được asset thì fallback 16:9 và ghi nguồn quyết định trong brief.
+  Profile đã chốt 9:16/16:9/1:1 luôn được tôn trọng, preview không tự đổi tỷ lệ.
+- Preview local phải cảnh báo ảnh gần như một màu/placeholder. Cùng từ khóa hoặc
+  file tồn tại không đủ để đánh dấu asset đã duyệt.
+- Mỗi project mới có `PROJECT_ROADMAP.md`. Đây là chỉ dẫn cho agent viết kịch bản,
+  chọn asset và đóng gói; không coi các mục lịch sử bên dưới là trạng thái hiện tại.
+- `preview_profile.json` là hướng dựng; `studio.project.json` là contract asset/cue;
+  TTS mẫu không phải voice cuối. Kaggle reflow sau khi có voice cuối.
+
+## Cập nhật ưu tiên — 27/09/2026
+
+Local là **phòng duyệt hướng dựng**: TTS chỉ làm mẫu; được phép xem thử hiệu ứng bằng Remotion.
+Không render sản phẩm cuối ở đây. Sau duyệt, chuyển profile + media/audio mẫu sang Kaggle,
+nơi tạo voiceover cuối, căn lại timing, mix và render. Ghi chú duyệt phục vụ hướng dẫn AI/skill sau này,
+không đồng nghĩa đã train model hoặc đã có skill renderer.
+
+**Luồng giao diện mới nhất:** gộp vào app desktop hiện có, đúng hai mục chính:
+(1) tìm/tải asset theo chủ đề; (2) nhận kịch bản, tách cảnh, ghép asset, preview và xuất ZIP Kaggle.
+Remotion/FFmpeg chạy nền local; MP4 nháp và audio phát ngay trong khung app, không bắt mở web Studio.
+Quét Groq có xác nhận riêng; gợi ý offline chỉ theo tên/mô tả và cần người dùng duyệt hình ảnh.
+
+Đã bổ sung giao diện preview hai khung; bốn preset chữ Remotion; `preview_profile.json` v2,
+revision/backup khi lưu, đánh dấu audio reference_only, duyệt rõ ràng bởi người dùng.
+Hướng dẫn và giới hạn hiện tại: `preview_studio/README.md`. Các phần cũ bên dưới là lịch sử;
+quy tắc “không hiệu ứng tại local” và “lưu không backup” đã được thay thế bởi mục này.
+
 Ngày đối chiếu: 26/09/2026. Trạng thái: thiết kế đề xuất, chưa phải chức năng đã triển khai.
+
+## Nhật ký chức năng đã làm (từ 26/09/2026)
+
+Lớp `brain/` (AI Brain) + `desktop_app.py` đã có thêm các khối chạy thật trên máy local, tách khỏi phần thiết kế bên dưới:
+
+- **`brain/`** — module AI Brain, chạy độc lập từng khâu: `models` (nạp nhiều key Groq/Gemini), `keypool` (xoay key + cooldown chống Google khóa lưu lượng khi gọi fallback liên tục), `clip` (cắt keyframe bằng ffmpeg), `vision` (Groq `qwen3.8-27b` quét ảnh → JSON caption/OCR/objects, max 3 ảnh/req, free tier OTPM 1000 → `max_completion_tokens≤900`), `scenes` (schema Scene + dựng cảnh từ script.md), `srt` (sinh phụ đề .srt theo thời lượng cảnh), `tts` (CHỈ Gemini TTS, fail thì bỏ qua — KHÔNG fallback edge-tts), `project` (đóng gói `project_<id>/`), `preview` (dựng timeline từ project để xem trước), `produce` (orchestrator end-to-end).
+- **CLI `python run.py ai scan|project|status`** — quét asset bằng Groq, đóng gói project, xem cấu hình AI. Key đọc từ `config.yaml` (trường `key_file`) hoặc `Downloads/groq.txt` + `Downloads/gemini.txt` (mỗi dòng 1 key, dòng `#` là chú thích).
+- **Timeline Preview kiểu CapCut trong desktop app** — nút "🎞 Xem trước timeline" + bảng "Dự án dựng sẵn" (bấm đúp mở). Cửa sổ preview chiếu asset nối tiếp liên tục, kịch bản/phụ đề chạy bên dưới, thanh tiến trình seek, phát audio qua ffplay — **chưa render thật**. Timeline dạng canvas: **kéo clip để đổi thứ tự, kéo mép phải clip để đổi thời lượng**, toolbar chỉnh trực tiếp (thời lượng/tốc độ/đổi asset/cắt bỏ/lùi-tiến/lưu `scenes.json`).
+- **Đọc video** bằng `imageio` + `imageio-ffmpeg` (frame-by-frame), ảnh bằng PIL; thêm vào `requirements.txt` khi đóng gói.
+- **Tích hợp Outlier Trend Scoring từ ViralMint (`core/scoring.py`)**:
+  Phân loại các video bùng nổ `OUTLIER` ($\ge3\times$), `STRONG` ($\ge5\times$), `BREAKOUT` ($\ge10\times$), `MONSTER` ($\ge20\times$) dựa trên tỉ lệ views / median kênh.
+- **Handoff Spec cho Flow3/Flow2 Kaggle (`brain/handoff.py`)**:
+  Tự động patch `scenes.json` + `preview_profile.json` + `handoff.json` với các trường chuẩn: `format`, `frame_rate`, `tts_profile`, `voice_resolution`. Sinh audio MP3 thật cho từng cảnh qua Gemini TTS, tạo `media_manifest.json`. Khi Flow3 Kaggle render thật sẽ không báo `missing_audio`.
+- **Mọi chỉnh sửa preview ghi đè `scenes.json` (chưa có bản sao lưu tự động)**.
+- **Project Sigma Mỹ-Trung demo** (`outputs/project_0d47746d7239/`):
+  kiểm tra lại ngày 28/09/2026 thấy 3 cảnh dùng 3 PNG dọc gần như một màu xanh
+  (màu trội 99,1–99,3%). Có 3 MP3 và một MP4 final 13,95 MB đã render từ các
+  asset xanh này; không tìm thấy 2 video Pexels trong `media/` như mô tả cũ.
+  Vì đầu vào hình ảnh là placeholder nên output tồn tại vẫn **không ready cho
+  Kaggle**. BAT chỉ mở preview để thay/duyệt lại asset.
+- **Kênh Douyin `65763947051` (帅帅小猫)**: Tải 13 video mới nhất (~74 MB) về
+  `downloads/douyin_65763947051/` bằng `opencli douyin user-videos` (Chrome login
+  Chuminga201 của bạn) + `ffmpeg` kéo thẳng `play_url` từ JSON trả về. Lưu ý:
+  opencli `--limit` ở bản 1.8.7 không có flag phân trang, mỗi lần gọi trả 13.
+  Cần nâng cấp opencli hoặc viết vòng lặp có `max_cursor` để lấy 29 video bạn yêu cầu.
+- **One-click Preview (`open_preview.py` + `open_preview_tin_tuc.bat`)**: Bấm đúp file `.bat` để tự động mở thẳng cửa sổ Preview CapCut cho dự án đã chỉ định mà không cần qua app chính `desktop_app.py`.
+- **Nối Provider Stock (`providers/stock_provider.py`)**: Tự động dùng Pexels & Pixabay API kéo video/ảnh dọc (9:16) miễn phí bản quyền thương mại để tự động bù tài nguyên cho cảnh thiếu (`needs_assets`). Key đã lưu tại `config.yaml`.
+- **Kho âm thanh local thương mại (`data/audio/`)**: Đã đánh dấu phân loại kho SFX (`whoosh`, `ding`, `pop`, `notification`, `bass_drop`) và kho BGM (`upbeat`, `lofi`, `cinematic`). Hướng dẫn cào Instagram/Facebook tại `data/audio/README_AUDIO_AND_CRAWL.md`.
+- **Resource Registry (`data/RESOURCE_REGISTRY.md`)**: Kho tài nguyên sáng tạo video tổng hợp — meme, SFX, storytelling, cộng đồng, phân tầng bản quyền âm thanh 🔴🟡🟢, và **bảng mapping `content_type` → nguồn cào** cho QC/Discover tra cứu tự động.
+
+### 🔧 Hướng nâng cấp QC (CẦN LÀM TIẾP)
+
+QC hiện tại (`stages/qc.py`) chỉ check kỹ thuật: resolution ≥ 720p, duration ≥ 8s, audio stream, pHash dedupe, speech ratio. **Chưa lọc theo chủ đề hay nguồn gốc.**
+
+Các bước nâng cấp dự kiến:
+1. **Thêm `content_type` vào `VideoItem` schema** (`core/schema.py`):
+   - Giá trị: `product_review`, `meme_compilation`, `storytelling`, `news_commentary`, `sports_highlight`, `film_review`, `funny_animal`, `motivational`
+   - Gán tự động bằng keyword matching title/hashtag hoặc AI classification
+2. **QC tra bảng `RESOURCE_REGISTRY.md` PHẦN 5** để validate:
+   - Video cào từ nguồn đúng với `content_type` của dự án → pass
+   - Video từ nguồn không liên quan → giảm điểm hoặc cảnh báo
+3. **Thêm `copyright_risk` field** vào `VideoItem`:
+   - Tự gán 🔴/🟡/🟢 dựa trên nguồn gốc asset (nhạc/SFX/clip)
+   - QC chặn 🔴 tự động, cảnh báo 🟡
+4. **Thêm `topic_relevance_score`** vào scoring:
+   - So khớp title/hashtag với topic keywords của dự án hiện tại
+   - Kết hợp với outlier score để ưu tiên video vừa viral vừa đúng chủ đề
+
+## Định hướng học hỏi từ kiến trúc ViralMint (Dành cho máy Local)
+
+Local **CHỈ** làm nhiệm vụ Viết kịch bản + Tạo bộ khung dự án (Scripting & Skeleton Assembly). Không render nặng, không lồng SFX hay hiệu ứng karaoke tại local. Việc render và lồng hiệu ứng thuộc về agent studio/Colab/Kaggle sau này (sẽ có SKILL.md riêng).
+
+Các điểm học từ ViralMint cho máy Local:
+1. **Đánh số thứ tự & Phân đoạn Cảnh chuẩn (Scene Indexing)**:
+   - Đánh số thứ tự từng cảnh (`scene_001`, `scene_002`...) kèm mốc thời lượng dự kiến và `visual_intent` để studio edit đọc chuẩn xác 100%.
+2. **Quy chuẩn Bộ khung Âm thanh (Audio Skeleton Handoff)**:
+   - Học cấu trúc khai báo nhạc nền & điểm ngắt thoại của ViralMint để đóng gói vào file handoff, giúp studio edit biết vị trí cần chèn âm thanh chuyển cảnh/nhạc nền mà không cần tự đoán.
+3. **Outlier Trend Scoring (`core/scoring.py`)**:
+   - Nhận diện video đột phá từ các kênh nhỏ/trung bình làm đầu vào ý tưởng kịch bản.
+
+---
+
+## 3 Option mở rộng tiếp theo (Cần thảo luận thêm)
+
+- **Option A (Tối ưu Handoff Spec cho máy Edit)**:
+  Tập trung chuẩn hóa file `handoff.json` & thư mục `project_<id>/` sao cho gói gọn toàn bộ kịch bản, asset, mốc âm thanh và số thứ tự cảnh. Khi đẩy lên Colab/Kaggle, agent bên studio edit chỉ cần đọc 1 file spec duy nhất là tự render tự động.
+
+- **Option B (Tối ưu Trải nghiệm Dựng sơ bộ tại Local)**:
+  Nâng cấp giao diện Preview Timeline trên Tkinter app: cho phép kéo-thả ghép nhanh asset vào kịch bản, cắt/gọt đoạn video sơ bộ, thay đổi vị trí cảnh trực quan mịn màng như CapCut để người dùng duyệt kịch bản ưng ý 100% trước khi xuất gói handoff.
+
+- **Option C (Kết hợp A & B)**:
+  Tối ưu cả giao diện làm kịch bản/bộ khung ở local (B) và chuẩn hóa file bàn giao Handoff Spec cho Colab/Kaggle (A).
+
+---
 
 ## Phạm vi đã thống nhất
 

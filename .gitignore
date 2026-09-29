@@ -49,3 +49,7 @@ test_tmp/
 Thumbs.db
 downloads/
 downloads/
+node_modules/
+preview_studio/public/projects/
+preview_studio/src/active-profile.json
+preview_studio/out/

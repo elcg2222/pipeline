@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "revision": 1,
+  "project_id": "project_bf9ff9351754",
+  "purpose": "direction_preview",
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "review_status": "draft",
+  "approved_at": null,
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "chapter_id": "",
+      "narration": "Meme",
+      "estimated_duration_sec": 3.0,
+      "visual_intent": "Meme",
+      "source_ids": [],
+      "asset_ids": [],
+      "trim_in": 0.0,
+      "trim_out": 0.0,
+      "framing": "",
+      "on_screen_text": "",
+      "text_effect": "fade",
+      "playback_rate": 1.0,
+      "review_notes": "",
+      "match_method": "",
+      "match_reason": "",
+      "needs_visual_review": true,
+      "alternatives": [],
+      "status": "needs_assets",
+      "media": "",
+      "audio": ""
+    }
+  ],
+  "missing_assets": [
+    "scene_001"
+  ],
+  "editor_target": "kaggle",
+  "timing_policy": "reflow_after_final_voiceover",
+  "style_notes": ""
+}

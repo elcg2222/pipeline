@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "revision": 1,
+  "project_id": "project_c6ae153bdead",
+  "purpose": "direction_preview",
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "review_status": "draft",
+  "approved_at": null,
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "chapter_id": "",
+      "narration": "Một chú mèo.",
+      "estimated_duration_sec": 3.0,
+      "visual_intent": "Mèo vui",
+      "source_ids": [],
+      "asset_ids": [
+        "fdec0e401465a6e90f78"
+      ],
+      "trim_in": 0.0,
+      "trim_out": 0.0,
+      "framing": "",
+      "on_screen_text": "",
+      "text_effect": "fade",
+      "playback_rate": 1.0,
+      "review_notes": "",
+      "match_method": "metadata_keywords",
+      "match_reason": "meo, vui",
+      "needs_visual_review": true,
+      "alternatives": [],
+      "status": "ready",
+      "media": "media/fdec0e401465a6e90f78.png",
+      "audio": ""
+    }
+  ],
+  "missing_assets": [],
+  "editor_target": "kaggle",
+  "timing_policy": "reflow_after_final_voiceover",
+  "style_notes": ""
+}

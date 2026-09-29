@@ -1,0 +1,41 @@
+{
+  "schema": "studio.handoff.v1",
+  "project_id": "fixture",
+  "producer": "local_pipeline",
+  "revision": 1,
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "timing_source": "estimated",
+  "assets": [
+    {
+      "asset_id": "asset_9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6",
+      "kind": "image",
+      "roles": [
+        "still"
+      ],
+      "path": "resources/image/9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6.png",
+      "sha256": "9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6",
+      "size_bytes": 10,
+      "description": "",
+      "source_url": "",
+      "license": "unreviewed"
+    }
+  ],
+  "cues": [],
+  "effects_required": [
+    "optical_motion_blur"
+  ],
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "asset_id": "asset_9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6",
+      "narration": "Xin chào",
+      "on_screen_text": "",
+      "text_effect": "fade",
+      "duration_s": 1.0,
+      "trim_in_s": 0.0,
+      "playback_rate": 1.0,
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "language": "English (US)",
+  "accent": "Tự nhiên",
+  "persona": "Tự nhiên",
+  "tone": "Vui vẻ",
+  "direction": "",
+  "voice": "Aoede",
+  "model": "gemini-3.8-flash-tts",
+  "processing": {
+    "speed": 1.25,
+    "pitch": 0.0,
+    "bass": 0.0,
+    "treble": 0.0,
+    "reverb": 0.0,
+    "volume": 100.0
+  }
+}

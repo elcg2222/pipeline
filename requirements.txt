@@ -14,6 +14,13 @@ instaloader>=4.12      # discovery Instagram theo hashtag, dùng session local
 pillow>=10.0
 imagehash>=4.3
 
+# --- AI Brain + Timeline Preview ---
+groq>=0.13
+google-genai>=1.0
+imageio>=2.35
+imageio-ffmpeg>=0.5
+pygame-ce==2.5.8       # optional device playback in local desktop; not needed for headless render
+
 # --- tuỳ chọn: lọc video không có tiếng người ---
 # torch>=2.2          # cài riêng theo hướng dẫn pytorch.org
 # torchaudio>=2.2

@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "revision": 1,
+  "project_id": "studio",
+  "purpose": "direction_preview",
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "review_status": "draft",
+  "approved_at": null,
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "scenes": [
+    {
+      "scene_id": "a",
+      "chapter_id": "",
+      "narration": "Mẫu",
+      "estimated_duration_sec": 1,
+      "visual_intent": "",
+      "source_ids": [],
+      "asset_ids": [],
+      "trim_in": 0.0,
+      "trim_out": 0.0,
+      "framing": "",
+      "on_screen_text": "",
+      "text_effect": "fade",
+      "playback_rate": 1.0,
+      "review_notes": "",
+      "match_method": "",
+      "match_reason": "",
+      "needs_visual_review": true,
+      "alternatives": [],
+      "status": "needs_assets",
+      "reference_audio": "audio/reference_5ec48d22dd6c425e814700c755cc27b9.wav",
+      "voice_recipe": {
+        "language": "English (US)",
+        "accent": "Tự nhiên",
+        "persona": "Tự nhiên",
+        "tone": "Vui vẻ",
+        "direction": "",
+        "voice": "Aoede",
+        "model": "gemini-3.8-flash-tts",
+        "processing": {
+          "speed": 1.25,
+          "pitch": 0.0,
+          "bass": 0.0,
+          "treble": 0.0,
+          "reverb": 0.0,
+          "volume": 100.0
+        }
+      },
+      "media": "",
+      "audio": "audio/reference_5ec48d22dd6c425e814700c755cc27b9.wav"
+    }
+  ],
+  "missing_assets": [
+    "a"
+  ],
+  "editor_target": "kaggle",
+  "timing_policy": "reflow_after_final_voiceover",
+  "style_notes": ""
+}

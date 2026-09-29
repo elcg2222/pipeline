@@ -216,6 +216,87 @@ def cmd_media(cfg, store, args):
         print(json.dumps(media_bridge.archive_stats(), ensure_ascii=False, indent=2))
 
 
+def cmd_ai(cfg, store, args):
+    """AI Brain: quét asset bằng Groq vision, TTS bằng Gemini, đóng gói project.
+
+    python run.py ai scan --dir downloads/<topic>      # quét mô tả asset
+    python run.py ai project --brief brief.json --script script.md --assets downloads/<topic>
+    python run.py ai status                             # xem cấu hình AI
+    """
+    import json
+    from pathlib import Path
+    from brain import models
+    from brain.vision import analyze_image, describe_asset
+
+    ai_cmd = args.ai_cmd or args.subcommand
+
+    if ai_cmd == "status":
+        print(json.dumps(models.status(cfg), ensure_ascii=False, indent=2))
+        return
+
+    if ai_cmd == "scan":
+        d = Path(args.dir) if args.dir else Path("downloads")
+        files = sorted([p for p in d.rglob("*")
+                        if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".mp4", ".webm", ".mov")])
+        key = models.load_groq_key(cfg)
+        if not key:
+            print("[!] Chưa có GROQ_API_KEY. Đặt env hoặc ai.groq.api_key trong config.yaml")
+            return
+        if not files:
+            print(f"[!] Không thấy file ảnh/video trong {d}")
+            return
+        print(f"Quét {len(files)} file bằng {models.GROQ_VISION_MODEL} ...")
+        cache = {}
+        cache_path = Path("data/asset_descriptions.json")
+        if cache_path.exists():
+            cache = json.loads(cache_path.read_text(encoding="utf-8"))
+        for i, p in enumerate(files, 1):
+            if p.stem in cache:
+                continue
+            try:
+                desc = describe_asset(p, key)
+                cache[p.stem] = desc
+                cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=2),
+                                      encoding="utf-8")
+                print(f"  [{i}/{len(files)}] {p.name} -> {desc.get('caption', '')[:50]}")
+            except Exception as e:
+                print(f"  [{i}/{len(files)}] {p.name} LỖI: {e}")
+        print(f"\nĐã lưu {len(cache)} mô tả -> {cache_path}")
+        return
+
+    if ai_cmd == "project":
+        brief_path = Path(args.brief) if args.brief else None
+        script_path = Path(args.script) if args.script else None
+        if not brief_path or not brief_path.exists():
+            print("[!] Cần --brief <file.json>")
+            return
+        if not script_path or not script_path.exists():
+            print("[!] Cần --script <file.md>")
+            return
+        brief = json.loads(brief_path.read_text(encoding="utf-8"))
+        script_md = script_path.read_text(encoding="utf-8")
+        research_md = ""
+        if args.research and Path(args.research).exists():
+            research_md = Path(args.research).read_text(encoding="utf-8")
+
+        from brain.scenes import build_scenes_from_script
+        scenes = build_scenes_from_script(script_md)
+
+        asset_paths = []
+        if args.dir:
+            d = Path(args.dir)
+            asset_paths = sorted([p for p in d.rglob("*")
+                                  if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".mp4", ".webm", ".mov")])
+
+        from brain.produce import run_production
+        result = run_production(brief, research_md, script_md, scenes,
+                                asset_paths, cfg, "outputs", project_id=args.project_id)
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return
+
+    print("[!] Lệnh ai không rõ. Dùng: ai scan | ai project | ai status")
+
+
 def cmd_retry(cfg, store, args):
     """Mở lại các item đã hết lượt thử để có thể tải lại sau khi sửa cấu hình."""
     import time
@@ -230,7 +311,7 @@ COMMANDS = {
     "doctor": cmd_doctor, "discover": cmd_discover, "download": cmd_download,
     "qc": cmd_qc, "export": cmd_export, "collect": cmd_collect,
     "all": cmd_all, "status": cmd_status, "add": cmd_add, "recheck": cmd_recheck,
-    "retry": cmd_retry, "media": cmd_media,
+    "retry": cmd_retry, "media": cmd_media, "ai": cmd_ai,
 }
 
 
@@ -258,6 +339,15 @@ def main():
                     help="(media search --save) cho phép lưu nội dung bị đánh dấu cấm thương mại")
     ap.add_argument("--fulltext", action="store_true",
                     help="(media crawl) bóc toàn văn bài báo")
+    # ai subcommand args
+    ap.add_argument("ai_cmd", nargs="?", default=None,
+                    help="(ai) scan | project | status")
+    ap.add_argument("--dir", default=None,
+                    help="(ai scan/project) thư mục chứa asset ảnh/video")
+    ap.add_argument("--brief", default=None, help="(ai project) file brief.json")
+    ap.add_argument("--script", default=None, help="(ai project) file script.md")
+    ap.add_argument("--research", default=None, help="(ai project) file research.md")
+    ap.add_argument("--project-id", default=None, help="(ai project) id thư mục xuất")
     args = ap.parse_args()
 
     cfg = load_config(args.config)

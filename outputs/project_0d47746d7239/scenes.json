@@ -1,0 +1,98 @@
+[
+  {
+    "scene_id": "scene_001",
+    "chapter_id": "BẢN TIN THỜI SỰ SIGMA: THƯƠNG ĐỈNH MỸ - TRUNG VÀ BÀN BỜ MỚI",
+    "narration": "Không ồn ào phô trương, Tổng thống Mỹ và Chủ tịch Tập Cận Bình bước vào phòng họp kín của Ủy ban LHQ. Mọi ánh mắt địa chính trị đều phải nín thở quan sát từng cử chỉ.",
+    "estimated_duration_sec": 15.0,
+    "visual_intent": "Cảnh 1: Khí chất Sigma tại Liên Hợp Quốc",
+    "source_ids": [],
+    "asset_ids": [
+      "4832196a3c9c83d0ef9e"
+    ],
+    "trim_in": 0.0,
+    "trim_out": 0.0,
+    "framing": "",
+    "on_screen_text": "",
+    "text_effect": "fade",
+    "playback_rate": 1.0,
+    "review_notes": "",
+    "match_method": "",
+    "match_reason": "",
+    "needs_visual_review": true,
+    "alternatives": [],
+    "status": "ready",
+    "format": "9:16",
+    "frame_rate": 30,
+    "tts_profile": "male_young",
+    "voice_resolution": {
+      "preset": "male_warm",
+      "tts_backend": "gemini",
+      "speed": 1.0,
+      "pitch": 0.0
+    }
+  },
+  {
+    "scene_id": "scene_002",
+    "chapter_id": "BẢN TIN THỜI SỰ SIGMA: THƯƠNG ĐỈNH MỸ - TRUNG VÀ BÀN BỜ MỚI",
+    "narration": "Giữa không khí căng thẳng của hội nghị, cái gật đầu của hai nhà lãnh đạo phát đi thông điệp rõ ràng: Siêu cường thật sự không cần tranh cãi, họ định đoạt luật chơi.",
+    "estimated_duration_sec": 15.0,
+    "visual_intent": "Cảnh 2: Đội hình siêu cường và thông điệp ngầm",
+    "source_ids": [],
+    "asset_ids": [
+      "d931fe1e4b9369010eda"
+    ],
+    "trim_in": 0.0,
+    "trim_out": 0.0,
+    "framing": "",
+    "on_screen_text": "",
+    "text_effect": "fade",
+    "playback_rate": 1.0,
+    "review_notes": "",
+    "match_method": "",
+    "match_reason": "",
+    "needs_visual_review": true,
+    "alternatives": [],
+    "status": "ready",
+    "format": "9:16",
+    "frame_rate": 30,
+    "tts_profile": "male_young",
+    "voice_resolution": {
+      "preset": "male_warm",
+      "tts_backend": "gemini",
+      "speed": 1.0,
+      "pitch": 0.0
+    }
+  },
+  {
+    "scene_id": "scene_003",
+    "chapter_id": "BẢN TIN THỜI SỰ SIGMA: THƯƠNG ĐỈNH MỸ - TRUNG VÀ BÀN BỜ MỚI",
+    "narration": "Hơn một giờ hội đàm khép lại. Không có bài phát biểu dài dòng, chỉ có các bản thỏa thuận kinh tế và kiểm soát AI được thông qua một cách dứt khoát.",
+    "estimated_duration_sec": 15.0,
+    "visual_intent": "Cảnh 3: Thỏa thuận ngầm về thương mại và công nghệ",
+    "source_ids": [],
+    "asset_ids": [
+      "f6df8403537c0ff0f899"
+    ],
+    "trim_in": 0.0,
+    "trim_out": 0.0,
+    "framing": "",
+    "on_screen_text": "",
+    "text_effect": "fade",
+    "playback_rate": 1.0,
+    "review_notes": "",
+    "match_method": "",
+    "match_reason": "",
+    "needs_visual_review": true,
+    "alternatives": [],
+    "status": "ready",
+    "format": "9:16",
+    "frame_rate": 30,
+    "tts_profile": "male_young",
+    "voice_resolution": {
+      "preset": "male_warm",
+      "tts_backend": "gemini",
+      "speed": 1.0,
+      "pitch": 0.0
+    }
+  }
+]

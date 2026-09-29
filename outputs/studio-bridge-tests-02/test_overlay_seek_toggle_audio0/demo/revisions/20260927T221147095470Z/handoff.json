@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "project_id": "demo",
+  "script_revision": 1,
+  "aspect_ratio": "9:16",
+  "target_duration_sec": 0,
+  "scene_order": [
+    "a"
+  ],
+  "media_root": "media/",
+  "subtitles_file": "subtitles.srt",
+  "missing_assets": [
+    "a"
+  ],
+  "missing_audio": [
+    "a"
+  ],
+  "status": "needs_assets"
+}

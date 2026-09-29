@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "project_id": "demo",
+  "script_revision": 1,
+  "aspect_ratio": "9:16",
+  "aspect_ratio_source": "explicit_or_legacy",
+  "target_duration_sec": 2.0,
+  "scene_order": [
+    "a"
+  ],
+  "media_root": "media/",
+  "subtitles_file": "subtitles.srt",
+  "missing_assets": [
+    "a"
+  ],
+  "missing_audio": [],
+  "status": "preview_draft",
+  "preview_profile": "preview_profile.json",
+  "revision": 1,
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "asset_quality_warnings": {}
+}

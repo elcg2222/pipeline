@@ -1,0 +1,26 @@
+{
+  "name": "pipeline-preview-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "predev": "node prepare-profile.mjs",
+    "precheck": "node prepare-profile.mjs",
+    "prestill": "node prepare-profile.mjs",
+    "prepreview": "node prepare-profile.mjs",
+    "dev": "node studio.cjs",
+    "check": "tsc --noEmit",
+    "still": "remotion still src/index.tsx Preview out/preview.png --frame=24",
+    "preview": "remotion render src/index.tsx Preview out/preview.mp4 --scale=0.5 --concurrency=2"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.529",
+    "remotion": "4.0.529",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0"
+  }
+}

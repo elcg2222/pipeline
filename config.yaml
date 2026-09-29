@@ -20,6 +20,7 @@ enabled_providers:
   douyin: true
   tiktok: true
   youtube: true
+  stock: true
   1688: false
   reddit: true
   instagram: true
@@ -40,6 +41,7 @@ max_per_author: 2
 platform_boost:
   douyin: 1.15
   tiktok: 1.0
+  stock: 1.0
   1688: 0.95
   youtube: 0.85
 providers:
@@ -115,6 +117,11 @@ providers:
     limit_per_source: 30
     pages: []
     use_scraper: true
+  stock:
+    pexels_api_key: 'qDuokKMMBQmebD8GKJ229KRUrvLj6FuYIuPZktTylw20P0HbbYVfZcUX'
+    pixabay_api_key: '57760623-622370b9f0a433650a36a4f48'
+    per_page: 20
+    orientation: 'portrait'  # 9:16 cho Shorts/Reels/TikTok
 qc:
   check_phash: true
   check_speech: false
@@ -126,6 +133,21 @@ qc:
 results_per_keyword: 30
 save_rate_ceiling: 0.05
 top_n_per_run: 20
+# --- Cấu hình AI Brain (Groq vision + Gemini TTS) ---
+ai:
+  groq:
+    api_key: ''          # hoặc đặt env GROQ_API_KEY
+    key_file: C:/Users/cuongle/Downloads/groq.txt   # nhiều key, mỗi dòng 1 key
+    vision_model: qwen/qwen3.8-27b
+  gemini:
+    api_key: ''          # hoặc đặt env GEMINI_API_KEY / GOOGLE_API_KEY
+    key_file: C:/Users/cuongle/Downloads/gemini.txt  # nhiều key, mỗi dòng 1 key
+    flash_models:
+    - gemini-3.8-flash
+    - gemini-3.7-flash
+    - gemini-3.6-flash
+    tts_model: gemini-3.8-flash-tts
+    tts_lite_model: gemini-3.8-flash-lite-tts
 # --- Giới hạn số lượng tải về (thêm rõ ràng) ---
 limits:
   per_topic: 30        # số video tối đa quét về cho MỖI từ khoá/chủ đề

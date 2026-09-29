@@ -1,0 +1,32 @@
+[
+  {
+    "scene_id": "scene_001",
+    "chapter_id": "",
+    "narration": "Lời.",
+    "estimated_duration_sec": 3.0,
+    "visual_intent": "Cảnh",
+    "source_ids": [],
+    "asset_ids": [],
+    "trim_in": 0.0,
+    "trim_out": 0.0,
+    "framing": "",
+    "on_screen_text": "",
+    "text_effect": "fade",
+    "playback_rate": 1.0,
+    "review_notes": "",
+    "match_method": "",
+    "match_reason": "",
+    "needs_visual_review": true,
+    "alternatives": [],
+    "status": "needs_assets",
+    "format": "9:16",
+    "frame_rate": 30,
+    "tts_profile": "male_young",
+    "voice_resolution": {
+      "preset": "male_young",
+      "tts_backend": "gemini",
+      "speed": 1.0,
+      "pitch": 0.0
+    }
+  }
+]
