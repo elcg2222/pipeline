@@ -1,0 +1,30 @@
+{
+  "schema": "flow3.project.v2",
+  "project_id": "ai-fixture",
+  "canvas": {
+    "width": 720,
+    "height": 720,
+    "aspect": "1:1",
+    "fps": 24.0
+  },
+  "tracks": [],
+  "metadata": {
+    "subtitle_style": {
+      "effect": "fade",
+      "studio_audio": [
+        {
+          "path": "D:\\pipeline\\outputs\\studio-bridge-tests-01\\test_real_media_reflow_and_flo0\\input\\resources\\audio\\3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8.wav",
+          "start_s": 0.0,
+          "gain_db": 0,
+          "loop": false
+        },
+        {
+          "path": "D:\\pipeline\\outputs\\studio-bridge-tests-01\\test_real_media_reflow_and_flo0\\prepared\\cue_0000.wav",
+          "start_s": 1.6,
+          "gain_db": -12.0,
+          "loop": false
+        }
+      ]
+    }
+  }
+}

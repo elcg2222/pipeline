@@ -1,0 +1,37 @@
+{
+  "status": "prepared_with_final_audio",
+  "rendered": false,
+  "word_timing": "not_aligned",
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "duration_s": 1.5,
+      "narration": "Xin chào",
+      "text_effect": "fade",
+      "final_audio_id": "asset_3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8",
+      "start_s": 0.0
+    },
+    {
+      "scene_id": "scene_002",
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "duration_s": 1.0,
+      "narration": "",
+      "text_effect": "fade",
+      "start_s": 1.5
+    }
+  ],
+  "duration_s": 2.5,
+  "input_sha256": "e42d1cceeb9ccb65cc04844a9de254d7175e6e3c98f3f795661430e559938e96",
+  "original_audio": "excluded",
+  "warning": "Layout is draft: centered 30% overlays. Preview audio never used. Review before final approval.",
+  "build_files": {
+    "working.mp4": "d5e5f67e31f843a82a44f1dd6a63bde3c36f41f6648dab44dc67e0f42f0f01d4",
+    "flow2_package.json": "1d0a32c5a80ec87a8575057bc0bb9b9edb73bfb4b7380b5e899df986e3877953",
+    "flow3.project.json": "4639d2709c7b1d376da3b066a553b495569f9ac660f53ac327e54334653ddcf9"
+  },
+  "audio_files": {
+    "D:\\pipeline\\outputs\\preview-fix-tests-02\\test_real_media_reflow_and_flo0\\input\\resources\\audio\\3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8.wav": "3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8",
+    "D:\\pipeline\\outputs\\preview-fix-tests-02\\test_real_media_reflow_and_flo0\\prepared\\cue_0000.wav": "db34ecb7ca1656629451ae0ff03d686b7cd2800edcd4e6872018e2f002fa9f2e"
+  }
+}

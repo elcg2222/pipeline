@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "revision": 1,
+  "project_id": "project_6faba7c77265",
+  "purpose": "direction_preview",
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "review_status": "draft",
+  "approved_at": null,
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "chapter_id": "",
+      "narration": "Ảnh và chữ trong app.",
+      "estimated_duration_sec": 2,
+      "visual_intent": "Kiểm tra ảnh",
+      "source_ids": [],
+      "asset_ids": [
+        "7469e5e0f709112597a6"
+      ],
+      "trim_in": 0.0,
+      "trim_out": 0.0,
+      "framing": "",
+      "on_screen_text": "Một app · Hai mục",
+      "text_effect": "pop",
+      "playback_rate": 1.0,
+      "review_notes": "",
+      "match_method": "metadata_keywords",
+      "match_reason": "anh, kiem, tra",
+      "needs_visual_review": true,
+      "alternatives": [
+        "bf09c907f761a4f17c6e"
+      ],
+      "status": "ready",
+      "media": "media/7469e5e0f709112597a6.png",
+      "audio": ""
+    },
+    {
+      "scene_id": "scene_002",
+      "chapter_id": "",
+      "narration": "Video và hiệu ứng chạy local.",
+      "estimated_duration_sec": 2,
+      "visual_intent": "Kiểm tra video",
+      "source_ids": [],
+      "asset_ids": [
+        "bf09c907f761a4f17c6e"
+      ],
+      "trim_in": 0.0,
+      "trim_out": 0.0,
+      "framing": "",
+      "on_screen_text": "Kịch bản → Preview",
+      "text_effect": "slide",
+      "playback_rate": 1.0,
+      "review_notes": "",
+      "match_method": "metadata_keywords",
+      "match_reason": "kiem, tra, video",
+      "needs_visual_review": true,
+      "alternatives": [
+        "7469e5e0f709112597a6"
+      ],
+      "status": "ready",
+      "media": "media/bf09c907f761a4f17c6e.mp4",
+      "audio": ""
+    }
+  ],
+  "missing_assets": [],
+  "editor_target": "kaggle",
+  "timing_policy": "reflow_after_final_voiceover",
+  "style_notes": ""
+}

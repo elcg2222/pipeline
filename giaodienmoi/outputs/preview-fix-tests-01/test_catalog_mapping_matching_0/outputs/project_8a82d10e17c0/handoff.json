@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "project_id": "project_8a82d10e17c0",
+  "script_revision": 1,
+  "aspect_ratio": "16:9",
+  "aspect_ratio_source": "auto_fallback:no_readable_selected_asset",
+  "target_duration_sec": 3.0,
+  "scene_order": [
+    "scene_001"
+  ],
+  "media_root": "media/",
+  "subtitles_file": "subtitles.srt",
+  "missing_assets": [],
+  "missing_audio": [
+    "scene_001"
+  ],
+  "status": "needs_asset_review",
+  "preview_profile": "preview_profile.json",
+  "revision": 1,
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "asset_quality_warnings": {
+    "scene_001": [
+      "Không đọc được ảnh: cannot identify image file 'D:\\\\pipeline\\\\outputs\\\\preview-fix-tests-01\\\\test_catalog_mapping_matching_0\\\\outputs\\\\project_8a82d10e17c0\\\\media\\\\86efb611b3147dec5ca1.png'"
+    ]
+  }
+}

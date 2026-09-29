@@ -1,0 +1,8 @@
+{
+  "name": "Social Trend Pipeline",
+  "description": "Multi-platform video discovery, asset curation, script assembly, and timeline preview dashboard.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

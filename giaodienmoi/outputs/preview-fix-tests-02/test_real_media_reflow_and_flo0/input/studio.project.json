@@ -1,0 +1,67 @@
+{
+  "schema": "studio.handoff.v1",
+  "project_id": "ai-fixture",
+  "producer": "kaggle_ai_video",
+  "aspect_ratio": "1:1",
+  "fps": 24,
+  "assets": [
+    {
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "kind": "image",
+      "roles": [
+        "still"
+      ],
+      "path": "resources/image/178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37.png",
+      "sha256": "178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "size_bytes": 380,
+      "description": "",
+      "source_url": "",
+      "license": "unreviewed"
+    },
+    {
+      "asset_id": "asset_3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8",
+      "kind": "audio",
+      "roles": [
+        "final_narration",
+        "sfx"
+      ],
+      "path": "resources/audio/3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8.wav",
+      "sha256": "3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8",
+      "size_bytes": 72078,
+      "description": "",
+      "source_url": "",
+      "license": "unreviewed"
+    }
+  ],
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "duration_s": 1,
+      "narration": "Xin chào",
+      "text_effect": "fade",
+      "final_audio_id": "asset_3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8"
+    },
+    {
+      "scene_id": "scene_002",
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "duration_s": 1,
+      "narration": "",
+      "text_effect": "fade"
+    }
+  ],
+  "cues": [
+    {
+      "cue_id": "cue_4654fa3240b34c328f7d0b86658e6bb3",
+      "asset_id": "asset_3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8",
+      "role": "sfx",
+      "scene_id": "scene_002",
+      "anchor": "scene_start",
+      "offset_s": 0.1,
+      "duration_s": 0.3,
+      "gain_db": -12.0,
+      "loop": false
+    }
+  ],
+  "effects_required": []
+}

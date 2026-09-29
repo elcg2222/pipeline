@@ -1,0 +1,28 @@
+{
+  "status": "prepared_with_final_audio",
+  "rendered": false,
+  "word_timing": "not_aligned",
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "duration_s": 1.5,
+      "narration": "Xin chào",
+      "text_effect": "fade",
+      "final_audio_id": "asset_3c0806373fd396c9c0264f24d0dab9c40c1bd727a24eb557f742d475a75d28f8",
+      "start_s": 0.0
+    },
+    {
+      "scene_id": "scene_002",
+      "asset_id": "asset_178d88a9830b2e1d47b02325a580a9545f21ee97ccf675897ca26398f3861d37",
+      "duration_s": 1.0,
+      "narration": "",
+      "text_effect": "fade",
+      "start_s": 1.5
+    }
+  ],
+  "duration_s": 2.5,
+  "input_sha256": "dd3fae6650fe64f2ee0dd51ec7129868d5c4955c5bf9e6cde2ba806935ae3ce4",
+  "original_audio": "excluded",
+  "warning": "Layout is draft: centered 30% overlays. Preview audio never used. Review before final approval."
+}

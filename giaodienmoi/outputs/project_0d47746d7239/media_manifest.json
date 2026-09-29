@@ -1,0 +1,26 @@
+{
+  "media": [
+    {
+      "filename": "4832196a3c9c83d0ef9e.png",
+      "kind": "image",
+      "size_bytes": 11921,
+      "source": "local_stock",
+      "license": "Pexels/Pixabay Commercial Free"
+    },
+    {
+      "filename": "d931fe1e4b9369010eda.png",
+      "kind": "image",
+      "size_bytes": 11580,
+      "source": "local_stock",
+      "license": "Pexels/Pixabay Commercial Free"
+    },
+    {
+      "filename": "f6df8403537c0ff0f899.png",
+      "kind": "image",
+      "size_bytes": 12011,
+      "source": "local_stock",
+      "license": "Pexels/Pixabay Commercial Free"
+    }
+  ],
+  "count": 3
+}

@@ -1,0 +1,35 @@
+{
+  "sp_1": {
+    "caption": "Một tấm áo thun màu đen với dòng chữ 'SALE 50%' in màu đỏ ở ngực trái.",
+    "ocr_text": "SALE 50%",
+    "objects": [
+      "áo thun",
+      "chữ in"
+    ],
+    "shot_type": "product",
+    "quality": "sharp",
+    "mood": "tối giản, thương mại"
+  },
+  "sp_2": {
+    "caption": "Một tấm vải màu đen với dòng chữ 'MASSAGE CD' được thêu bằng chỉ xanh lá cây ở góc trên bên trái.",
+    "ocr_text": "MASSAGE CD",
+    "objects": [
+      "vải",
+      "chữ thêu"
+    ],
+    "shot_type": "closeup",
+    "quality": "sharp",
+    "mood": "tối giản, chuyên nghiệp"
+  },
+  "sp_3": {
+    "caption": "Một hình ảnh nền tối màu, gần như toàn bộ là màu đen, với một dòng chữ màu xanh dương nhỏ ở góc trên bên trái.",
+    "ocr_text": "CLE SPA",
+    "objects": [
+      "nền tối",
+      "chữ"
+    ],
+    "shot_type": "text_only",
+    "quality": "low_res",
+    "mood": "tối giản, bí ẩn"
+  }
+}

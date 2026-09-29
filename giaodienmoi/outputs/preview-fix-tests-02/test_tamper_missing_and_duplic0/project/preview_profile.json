@@ -1,0 +1,13 @@
+{
+  "project_id": "fixture",
+  "aspect_ratio": "9:16",
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "media": "image.png",
+      "narration": "Xin chào",
+      "estimated_duration_sec": 1,
+      "text_effect": "fade"
+    }
+  ]
+}

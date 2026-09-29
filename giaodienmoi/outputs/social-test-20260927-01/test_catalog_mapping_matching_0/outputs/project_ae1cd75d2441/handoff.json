@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "project_id": "project_ae1cd75d2441",
+  "script_revision": 1,
+  "aspect_ratio": "9:16",
+  "target_duration_sec": 3.0,
+  "scene_order": [
+    "scene_001"
+  ],
+  "media_root": "media/",
+  "subtitles_file": "subtitles.srt",
+  "missing_assets": [],
+  "missing_audio": [
+    "scene_001"
+  ],
+  "status": "preview_draft",
+  "preview_profile": "preview_profile.json",
+  "revision": 1,
+  "audio_role": "reference_only",
+  "final_voiceover_required": true
+}

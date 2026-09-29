@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "project_id": "project_0d47746d7239",
+  "script_revision": 1,
+  "aspect_ratio": "9:16",
+  "target_duration_sec": 45.0,
+  "scene_order": [
+    "scene_001",
+    "scene_002",
+    "scene_003"
+  ],
+  "media_root": "media/",
+  "subtitles_file": "subtitles.srt",
+  "missing_assets": [],
+  "missing_audio": [],
+  "status": "needs_asset_review",
+  "preview_profile": "preview_profile.json",
+  "revision": 2,
+  "audio_role": "reference_only",
+  "final_voiceover_required": true,
+  "format": "9:16",
+  "frame_rate": 30,
+  "tts_profile": "male_young",
+  "asset_quality_warnings": {
+    "scene_001": [
+      "Ảnh gần như một màu; có thể là placeholder/chroma hoặc asset chưa hoàn thiện."
+    ],
+    "scene_002": [
+      "Ảnh gần như một màu; có thể là placeholder/chroma hoặc asset chưa hoàn thiện."
+    ],
+    "scene_003": [
+      "Ảnh gần như một màu; có thể là placeholder/chroma hoặc asset chưa hoàn thiện."
+    ]
+  }
+}

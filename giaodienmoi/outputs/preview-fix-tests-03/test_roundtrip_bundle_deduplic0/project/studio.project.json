@@ -1,0 +1,76 @@
+{
+  "schema": "studio.handoff.v1",
+  "project_id": "fixture",
+  "producer": "local_pipeline",
+  "revision": 1,
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "timing_source": "estimated",
+  "assets": [
+    {
+      "asset_id": "asset_9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6",
+      "kind": "image",
+      "roles": [
+        "still"
+      ],
+      "path": "resources/image/9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6.png",
+      "sha256": "9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6",
+      "size_bytes": 10,
+      "description": "",
+      "source_url": "",
+      "license": "unreviewed"
+    },
+    {
+      "asset_id": "asset_9719e8c85b2f50abd3406109a262cf861143c0e862bd4fbc9a6c51ce0220a2b1",
+      "kind": "audio",
+      "roles": [
+        "sfx",
+        "music"
+      ],
+      "path": "resources/audio/9719e8c85b2f50abd3406109a262cf861143c0e862bd4fbc9a6c51ce0220a2b1.wav",
+      "sha256": "9719e8c85b2f50abd3406109a262cf861143c0e862bd4fbc9a6c51ce0220a2b1",
+      "size_bytes": 10,
+      "description": "",
+      "source_url": "",
+      "license": "unreviewed"
+    }
+  ],
+  "cues": [
+    {
+      "cue_id": "cue_da2c9dc75fb84721991be87215a54e5c",
+      "asset_id": "asset_9719e8c85b2f50abd3406109a262cf861143c0e862bd4fbc9a6c51ce0220a2b1",
+      "role": "sfx",
+      "scene_id": "scene_001",
+      "anchor": "scene_start",
+      "offset_s": 0.0,
+      "duration_s": 0.2,
+      "gain_db": -12.0,
+      "loop": false
+    },
+    {
+      "cue_id": "cue_c11eed3ce2c6491bb7a3f1aa087c24b4",
+      "asset_id": "asset_9719e8c85b2f50abd3406109a262cf861143c0e862bd4fbc9a6c51ce0220a2b1",
+      "role": "sfx",
+      "scene_id": "scene_001",
+      "anchor": "scene_start",
+      "offset_s": 0.4,
+      "duration_s": 0.2,
+      "gain_db": -12.0,
+      "loop": false
+    }
+  ],
+  "effects_required": [],
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "asset_id": "asset_9febe01bd41bfb69683e29d711d8adffc9ae38de17a6873464b416f3b67398b6",
+      "narration": "Xin chào",
+      "on_screen_text": "",
+      "text_effect": "fade",
+      "duration_s": 1.0,
+      "trim_in_s": 0.0,
+      "playback_rate": 1.0,
+      "notes": ""
+    }
+  ]
+}
